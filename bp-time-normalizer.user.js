@@ -1,12 +1,14 @@
 // ==UserScript==
 // @name         $BP Time Normalizer
 // @namespace    eeek
-// @version      0.1.0
+// @version      1.0.0
 // @description  Reveals the full time on the page
 // @author       eeek
 // @match        https://backpack.tf/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=backpack.tf
 // @grant        none
+// @updateURL    https://github.com/yaboieeek/bp-misc-extensions/raw/refs/heads/main/bp-time-normalizer.user.js
+// @downloadURL  https://github.com/yaboieeek/bp-misc-extensions/raw/refs/heads/main/bp-time-normalizer.user.js
 // ==/UserScript==
 
 const $times = [...document.querySelectorAll('time')];
