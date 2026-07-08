@@ -7,6 +7,8 @@
 // @match        https://backpack.tf/suggestion/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=backpack.tf
 // @grant        none
+// @updateURL    https://github.com/yaboieeek/bp-misc-extensions/raw/refs/heads/main/bp-deleted-comments-revealer.user.js
+// @downloadURL  https://github.com/yaboieeek/bp-misc-extensions/raw/refs/heads/main/bp-time-bp-deleted-comments-revealer.user.js
 // ==/UserScript==
 
 const DELETED_COMMENTS_C = [...document.querySelectorAll('.comment.deleted')];
