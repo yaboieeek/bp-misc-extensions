@@ -12,3 +12,8 @@ Userscripts for backpack.tf that are going to be placed in one script eventually
 <a href="https://github.com/yaboieeek/bp-misc-extensions/raw/refs/heads/main/bp-time-normalizer.user.js">Install script</a>
 <p>Script converts all the found timestamps on page to UTC time keeping the 'x ago'. If it's a suggestion timestamp, it will highlight 3 months old suggestions timestamps with red color</p>
 <img width="300" alt="BP TIME NORMALIZER" src="https://github.com/user-attachments/assets/805afaee-3d3f-4b4d-b338-8759c9a6fba4" />
+
+## $BP Deleted Comments Revealer 
+<a href="https://github.com/yaboieeek/bp-misc-extensions/raw/refs/heads/main/bp-deleted-comments-revealer.user.js">Install script</a>
+<p>Script reveals all the found deleted comments on page. Works with suggestions comments</p>
+<img width="600" alt="BP DELETED COMMENT REVEALER" src="https://github.com/user-attachments/assets/f8b17ad1-511b-47ff-8fca-78ab888c88be" />
