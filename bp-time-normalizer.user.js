@@ -46,10 +46,10 @@ const highlightSuggestionOnDemand = ($e) => {
     const isInDate = difference < GLOBAL_DIFFERENCE_TRESHOLD;
 
     console.log(Date.now(), timestamp, difference, GLOBAL_DIFFERENCE_TRESHOLD)
-    const $span = `<span style="font-weight: boldREP">(${$e.innerText})</span></br>`
+    const $span = `<span style="font-weight: boldREP">(${$e.innerText})</span>`
     if (isInDate || !isSugg) return $span.replace('REP', '');
 
-    return $span.replace('REP', '; color:red')
+    return $span.replace('REP', '; color:red') + '<br>'
 }
 
 await new Promise((resolve) => setTimeout(() => resolve(), 50))
