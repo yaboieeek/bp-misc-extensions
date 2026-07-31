@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         !$BP Advanced Stat Page UI
 // @namespace    eeek
-// @version      1.0.0
+// @version      1.0.1
 // @description  holy shit eeek where have you been
 // @author       eeek
 // @match        https://backpack.tf/stats/*
@@ -244,7 +244,7 @@ class ListingsController {
 
                     <div class="quote-box">
                 <i class="fa fa-quote-left pull-left fa-large text-muted"></i>
-                <p>${listingData.listing_comment}</p>
+                <p>${listingData?.listing_comment?? ''}</p>
                 <i class="fa fa-quote-right pull-right fa-large text-muted"></i>
             </div>
             </div>
