@@ -25,6 +25,7 @@ Userscripts for backpack.tf that are going to be placed in one script eventually
 * Load listings (automatically pressed once page is opened)
 
 Loads up to 10 listings if available and displays them according to current filters. Loaded listings don't have their bump/list time, item tooltips are unavailable and user tooltips won't work too. It's just a listing, username and the tradeoffer link
+<br>
 <img width="300" alt="BP ADVANCED STAT PAGE UI" src="https://github.com/user-attachments/assets/2befcc37-2f38-429f-8c3b-10b63557fe90" />
 
 
