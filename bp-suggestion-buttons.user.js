@@ -115,7 +115,8 @@ class SuggestionPageUI {
             }
 
             case 'Stats': {
-                link = window.location.href.replace('vote', 'stats')
+                link = window.location.href.replace('vote', 'stats');
+                break
             }
              default: {
                  link += itemData.effect_name +' ' + itemData.name;
