@@ -1,15 +1,13 @@
 // ==UserScript==
 // @name         $BP Suggestion Buttons
 // @namespace    eeek
-// @version      1.0.0
+// @version      1.0.1
 // @description  adds more buttons to suggestion pages
 // @author       eeek
 // @match        https://backpack.tf/vote/Unusual/*
 // @match        https://backpack.tf/suggestion/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=backpack.tf
 // @grant        none
-// @updateURL    https://github.com/yaboieeek/bp-misc-extensions/raw/refs/heads/main/bp-suggestion-buttons.user.js
-// @downloadURL   https://github.com/yaboieeek/bp-misc-extensions/raw/refs/heads/main/bp-suggestion-buttons.user.js
 // ==/UserScript==
 const itemData = document.querySelector('.item').dataset;
 
@@ -115,8 +113,8 @@ class SuggestionPageUI {
             }
 
             case 'Stats': {
-                link = window.location.href.replace('vote', 'stats');
-                break
+                link = `https://backpack.tf/stats/${this.itemData.quality_elevated ? 'Strange ' : ''}Unusual/${this.itemData.name}/Tradable/${this.itemData.craftable == 1 ? 'Craftable' : 'Non-Craftable'}/${this.itemData.effect_id}`;
+                break;
             }
              default: {
                  link += itemData.effect_name +' ' + itemData.name;
