@@ -1,11 +1,12 @@
 // ==UserScript==
 // @name         $BP Suggestion Buttons
 // @namespace    eeek
-// @version      1.0.1
+// @version      1.1.0
 // @description  adds more buttons to suggestion pages
 // @author       eeek
 // @match        https://backpack.tf/vote/Unusual/*
 // @match        https://backpack.tf/suggestion/*
+// @match        https://backpack.tf/item/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=backpack.tf
 // @grant        none
 // ==/UserScript==
@@ -116,10 +117,10 @@ class SuggestionPageUI {
                 link = `https://backpack.tf/stats/${this.itemData.quality_elevated ? 'Strange ' : ''}Unusual/${this.itemData.name}/Tradable/${this.itemData.craftable == 1 ? 'Craftable' : 'Non-Craftable'}/${this.itemData.effect_id}`;
                 break;
             }
-             default: {
-                 link += itemData.effect_name +' ' + itemData.name;
-                 break;
-             }
+            default: {
+                link += itemData.effect_name +' ' + itemData.name;
+                break;
+            }
         }
         console.log(link);
         return link;
@@ -131,7 +132,7 @@ class SuggestionPageUI {
         const buttons = sitesDataArray
         .filter(siteData => !(this.hasMpLink && siteData.siteName === 'Marketplace.tf'))
         .map(siteData => {
-           return this._generateSiteButton(siteData, itemData);
+            return this._generateSiteButton(siteData, itemData);
         });
 
         const $c = document.createElement('div');
@@ -142,7 +143,56 @@ class SuggestionPageUI {
         document.querySelector('.panel-body').append($c);
     }
 }
+class HistoryPageUI {
+    constructor() {
+        this.itemName = document.querySelector('.item-text h2').innerText.trim();
+        this._create()
+    }
 
-if (itemData.quality == 5) {
+    _create() {
+        this._addArchivistLinks();
+    }
+
+    _addArchivistLinks() {
+        const $idRows = [...document.querySelectorAll('tbody tr')];
+        $idRows.forEach(($row) => this._addArchivistLink($row));
+    }
+
+    _addArchivistLink($row) {
+        const [_, $namecol, $timecol] = [...$row.querySelectorAll('td')];
+
+        const $link = document.createElement('a');
+
+        const rawDate = $timecol.innerText.trim();
+        const dateTail = new Date(rawDate).toISOString().split('T')[0];
+
+        $link.href = this._constructArchivistLink(dateTail);
+        $link.target = '_blank';
+
+        const $clockIcon = document.createElement('i');
+        $clockIcon.className = 'fa fa-clock-o';
+        $clockIcon.style.cssText = `float: right; font-size: 1.5rem`
+        $link.append($clockIcon);
+
+
+        $clockIcon.title = `View on Archivist.tf @${dateTail}`;
+
+
+        $namecol.append($link)
+
+
+        $($clockIcon).tooltip({trigger: 'hover'});
+    }
+
+
+    _constructArchivistLink(dateTail) {
+        const baseUrl = `https://archivist.tf/history?item=`;
+        return `${baseUrl}${encodeURIComponent(this.itemName)}&at=${dateTail}`
+
+    }
+}
+if (itemData.quality == 5 && !window.location.href.includes('item')) {
     new SuggestionPageUI();
+} else if (window.location.href.includes('item')) {
+    new HistoryPageUI()
 }
