@@ -34,5 +34,8 @@ Loads up to 10 listings if available and displays them according to current filt
 <p>Adds Archivist.tf link to item history rows</p>
 <br>
 <img width="600" alt="BP SUGGESTION BUTTONS" src="https://github.com/user-attachments/assets/d182454c-f56b-446b-8241-59742bd3c1be" />
+<img width="600"  alt="BP SUGGESTION BUTTONS 2" src="https://github.com/user-attachments/assets/e7cefade-8146-40a5-bcaf-5a4d4960aa24" />
+<img width="600" alt="BP SUGGESTION BUTTONS 3" src="https://github.com/user-attachments/assets/1926f80d-f099-4ef8-8a89-46c792d99b68" />
+
 
 
