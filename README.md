@@ -28,5 +28,11 @@ Loads up to 10 listings if available and displays them according to current filt
 <br>
 <img width="300" alt="BP ADVANCED STAT PAGE UI" src="https://github.com/user-attachments/assets/2befcc37-2f38-429f-8c3b-10b63557fe90" />
 
+## $BP Suggestion Buttons
+<a href="https://github.com/yaboieeek/bp-misc-extensions/raw/refs/heads/main/bp-suggestion-buttons.user.js">Install script</a>
+<p>Adds different market buttons to suggestion related pages</p>
+<p>Adds Archivist.tf link to item history rows</p>
+<br>
+<img width="600" alt="BP SUGGESTION BUTTONS" src="https://github.com/user-attachments/assets/d182454c-f56b-446b-8241-59742bd3c1be" />
 
 
