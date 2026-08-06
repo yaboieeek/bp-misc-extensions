@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         $BP Suggestion Buttons
 // @namespace    eeek
-// @version      1.1.0
+// @version      1.1.1
 // @description  adds more buttons to suggestion pages
 // @author       eeek
 // @match        https://backpack.tf/vote/Unusual/*
@@ -159,8 +159,8 @@ class HistoryPageUI {
     }
 
     _addArchivistLink($row) {
-        const [_, $namecol, $timecol] = [...$row.querySelectorAll('td')];
-
+        const [_, $namecol] = [...$row.querySelectorAll('td')];
+        const $timecol = $row.querySelector('td:last-child');
         const $link = document.createElement('a');
 
         const rawDate = $timecol.innerText.trim();
