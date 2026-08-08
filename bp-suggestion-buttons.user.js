@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         $BP Suggestion Buttons
 // @namespace    eeek
-// @version      1.1.1
+// @version      1.1.2
 // @description  adds more buttons to suggestion pages
 // @author       eeek
 // @match        https://backpack.tf/vote/Unusual/*
+// @match        https://backpack.tf/vote/Strange%20Unusual/*
 // @match        https://backpack.tf/suggestion/*
 // @match        https://backpack.tf/item/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=backpack.tf
@@ -17,6 +18,11 @@ class SuggestionPageUI {
         {
             baseLink: 'backpack.tf',
             siteName: 'Stats',
+            textIcon: true
+        },
+         {
+            baseLink: 'https://steamcommunity.com/market/listings/440/',
+            siteName: 'SCM',
             textIcon: true
         },
         {
@@ -79,6 +85,7 @@ class SuggestionPageUI {
             switch (siteData.siteName) {
                 case 'Mannco.store': repres.className = 'fa fa-money'; break;
                 case 'Stats': repres.className = 'stm stm-backpack-tf'; break;
+                case 'SCM': repres.className = 'stm stm-steam'; break;
                 default: repres.className = 'fa fa-camera'; break;
             }
         } else {
@@ -108,7 +115,7 @@ class SuggestionPageUI {
                 link += itemData.effect_name + ' ' + itemData.name;
                 break;
             }
-            case 'Marketplace.tf' : { // defindex -> ; quality -> 5; effect with 'u' -> 'u'effect_id
+            case 'Marketplace.tf' : { // defindex -> ; quality -> 5; effect with 'u' -> 'u'effect_id 
                 link+= `${itemData.defindex};5;u${itemData.effect_id}${itemData.quality_elevated ? ';strange' : ''}`;
                 break;
             }
@@ -117,12 +124,15 @@ class SuggestionPageUI {
                 link = `https://backpack.tf/stats/${this.itemData.quality_elevated ? 'Strange ' : ''}Unusual/${this.itemData.name}/Tradable/${this.itemData.craftable == 1 ? 'Craftable' : 'Non-Craftable'}/${this.itemData.effect_id}`;
                 break;
             }
+            case 'SCM' : {
+                link += `${this.itemData.quality_elevated ? 'Strange ' : ''}Unusual ` + this.itemData.name
+                break;
+            }
             default: {
-                link += itemData.effect_name +' ' + itemData.name;
+                link += this.itemData.effect_name +' ' + this.itemData.name;
                 break;
             }
         }
-        console.log(link);
         return link;
     }
     _makeButtonsAndAppend(sitesDataArray = [], itemData) {
