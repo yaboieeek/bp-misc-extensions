@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         $BP Suggestion Buttons
 // @namespace    eeek
-// @version      1.2.0
+// @version      1.2.1
 // @description  adds more buttons to suggestion pages
 // @author       eeek
 // @match        https://backpack.tf/vote/Unusual/*
@@ -9,6 +9,8 @@
 // @match        https://backpack.tf/suggestion/*
 // @match        https://backpack.tf/item/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=backpack.tf
+// @updateURL    https://github.com/yaboieeek/bp-misc-extensions/raw/refs/heads/main/bp-suggestion-buttons.user.js
+// @downloadURL  https://github.com/yaboieeek/bp-misc-extensions/raw/refs/heads/main/bp-suggestion-buttons.user.js
 // @grant        none
 // ==/UserScript==
 const itemData = document.querySelector('.item').dataset;
