@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         $BP Suggestion Buttons
 // @namespace    eeek
-// @version      1.1.2
+// @version      1.2.0
 // @description  adds more buttons to suggestion pages
 // @author       eeek
 // @match        https://backpack.tf/vote/Unusual/*
@@ -20,7 +20,7 @@ class SuggestionPageUI {
             siteName: 'Stats',
             textIcon: true
         },
-         {
+        {
             baseLink: 'https://steamcommunity.com/market/listings/440/',
             siteName: 'SCM',
             textIcon: true
@@ -48,6 +48,11 @@ class SuggestionPageUI {
         {
             baseLink: 'https://next.backpack.tf/classifieds/snapshots/',
             siteName: 'Next snapshots',
+            textIcon: true
+        },
+        {
+            baseLink: 'https://archivist.tf/history?item=',
+            siteName: 'Archivist.tf',
             textIcon: true
         }
 
@@ -86,6 +91,7 @@ class SuggestionPageUI {
                 case 'Mannco.store': repres.className = 'fa fa-money'; break;
                 case 'Stats': repres.className = 'stm stm-backpack-tf'; break;
                 case 'SCM': repres.className = 'stm stm-steam'; break;
+                case 'Archivist.tf': repres.className = 'fa fa-archive'; break;
                 default: repres.className = 'fa fa-camera'; break;
             }
         } else {
@@ -115,7 +121,7 @@ class SuggestionPageUI {
                 link += itemData.effect_name + ' ' + itemData.name;
                 break;
             }
-            case 'Marketplace.tf' : { // defindex -> ; quality -> 5; effect with 'u' -> 'u'effect_id 
+            case 'Marketplace.tf' : { // defindex -> ; quality -> 5; effect with 'u' -> 'u'effect_id
                 link+= `${itemData.defindex};5;u${itemData.effect_id}${itemData.quality_elevated ? ';strange' : ''}`;
                 break;
             }
@@ -128,8 +134,12 @@ class SuggestionPageUI {
                 link += `${this.itemData.quality_elevated ? 'Strange ' : ''}Unusual ` + this.itemData.name
                 break;
             }
+            case 'Archivist.tf' : {
+                link += (this.itemData.quality_elevated ? 'Strange ' : '') + this.itemData.effect_name +' ' + this.itemData.name + `&at=${convertCurrentDayToDateTail()}`;
+                break;
+            }
             default: {
-                link += this.itemData.effect_name +' ' + this.itemData.name;
+                link += (this.itemData.quality_elevated ? 'Strange ' : '') + this.itemData.effect_name +' ' + this.itemData.name;
                 break;
             }
         }
@@ -153,6 +163,7 @@ class SuggestionPageUI {
         document.querySelector('.panel-body').append($c);
     }
 }
+
 class HistoryPageUI {
     constructor() {
         this.itemName = document.querySelector('.item-text h2').innerText.trim();
@@ -173,8 +184,7 @@ class HistoryPageUI {
         const $timecol = $row.querySelector('td:last-child');
         const $link = document.createElement('a');
 
-        const rawDate = $timecol.innerText.trim();
-        const dateTail = new Date(rawDate).toISOString().split('T')[0];
+        const dateTail = convertCurrentDayToDateTail($timecol);
 
         $link.href = this._constructArchivistLink(dateTail);
         $link.target = '_blank';
@@ -194,13 +204,19 @@ class HistoryPageUI {
         $($clockIcon).tooltip({trigger: 'hover'});
     }
 
-
     _constructArchivistLink(dateTail) {
         const baseUrl = `https://archivist.tf/history?item=`;
         return `${baseUrl}${encodeURIComponent(this.itemName)}&at=${dateTail}`
 
     }
 }
+
+function convertCurrentDayToDateTail($timecol = null) {
+    const rawDate = $timecol ? $timecol.innerText.trim() : Date.now();
+    const dateTail = new Date(rawDate).toISOString().split('T')[0];
+    return dateTail
+}
+
 if (itemData.quality == 5 && !window.location.href.includes('item')) {
     new SuggestionPageUI();
 } else if (window.location.href.includes('item')) {
