@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         $BP Suggestion Buttons
 // @namespace    eeek
-// @version      1.2.1
+// @version      1.2.2
 // @description  adds more buttons to suggestion pages
 // @author       eeek
 // @match        https://backpack.tf/vote/Unusual/*
@@ -133,7 +133,7 @@ class SuggestionPageUI {
                 break;
             }
             case 'SCM' : {
-                link += `${this.itemData.quality_elevated ? 'Strange ' : ''}Unusual ` + this.itemData.name
+                link += `${this.itemData.quality_elevated ? 'Strange ' : ''}Unusual ` + this.itemData.name + `?appid=440&q=${this.itemData.effect_name}`
                 break;
             }
             case 'Archivist.tf' : {
