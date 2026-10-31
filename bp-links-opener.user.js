@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         $BP premium links opener
 // @namespace    eeek
-// @version      0.2.0
+// @version      0.2.1
 // @description  opens premium links on the effects page with amount/skip controls
 // @author       eeek
 // @match        https://backpack.tf/effect/*
@@ -119,7 +119,7 @@
         : links.slice(skip, skip + amount);
 
         if (toOpen.length === 0) {
-            $STATUS.textContent = 'Нет ссылок для открытия';
+            $STATUS.textContent = 'No links to open';
             return;
         }
 
